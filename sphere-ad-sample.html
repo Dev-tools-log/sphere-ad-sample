@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            cursor: grab;
+            user-select: none;
+            color: white;
+            background-size: 100% 100%;
+            background-color: #282533;
+            background-image: radial-gradient(circle at 50% 50%, rgba(217, 206, 255, 0.1) 0%, rgb(40, 37, 51, 0) 70%);
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body:active {
+            cursor: grabbing;
+        }
+
+        .scene {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ads-container {
+            position: relative;
+            transform-style: preserve-3d;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.1s ease;
+        }
+
+        @keyframes clockwiseRotate {
+            from {
+                transform: rotateY(0deg);
+            }
+
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+
+        .ad-tag {
+            position: absolute;
+            transform-style: preserve-3d;
+            transform-origin: center center;
+            width: 236px;
+            height: 60px;
+            left: calc(50% - 118px);
+            top: calc(50% - 60px);
+            backface-visibility: visible;
+            pointer-events: auto;
+            transition: all 0.5s ease-out;
+        }
+
+        .ad-tag:hover {
+            z-index: 100;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .ad-label {
+            display: none;
+        }
+        
+        .sample-ad {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #2a2e31, #44525c);
+            color: white;
+            font-weight: bold;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        
+        .sample-ad:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) translateX(0px) rotate3d(1, 0.5, 0.5, 0deg);
+            }
+
+            25% {
+                transform: translateY(-8px) translateX(5px) rotate3d(1, 0.5, 0.5, 0.5deg);
+            }
+
+            50% {
+                transform: translateY(3px) translateX(-3px) rotate3d(1, 0.5, 0.5, 0deg);
+            }
+
+            75% {
+                transform: translateY(8px) translateX(2px) rotate3d(1, 0.5, 0.5, -0.5deg);
+            }
+
+            100% {
+                transform: translateY(0px) translateX(0px) rotate3d(1, 0.5, 0.5, 0deg);
+            }
+        }
+
+        @keyframes pulseLight {
+            0% {
+                opacity: 0.7;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scene">
+        <div class="light"></div>
+
+        <div class="ads-container auto-rotate">
+            <!-- First spiral level -->
+            <div class="ad-tag ad-1">
+                <div class="ad-label">Ad-1</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-2">
+                <div class="ad-label">Ad-2</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-3">
+                <div class="ad-label">Ad-3</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-4">
+                <div class="ad-label">Ad-4</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-5">
+                <div class="ad-label">Ad-5</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-6">
+                <div class="ad-label">Ad-6</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-7">
+                <div class="ad-label">Ad-7</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-8">
+                <div class="ad-label">Ad-8</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-9">
+                <div class="ad-label">Ad-9</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-10">
+                <div class="ad-label">Ad-10</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <!-- Second spiral level (elevated) -->
+            <div class="ad-tag ad-11">
+                <div class="ad-label">Ad-11</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-12">
+                <div class="ad-label">Ad-12</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-13">
+                <div class="ad-label">Ad-13</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-14">
+                <div class="ad-label">Ad-14</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-15">
+                <div class="ad-label">Ad-15</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-16">
+                <div class="ad-label">Ad-16</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-17">
+                <div class="ad-label">Ad-17</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-18">
+                <div class="ad-label">Ad-18</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-19">
+                <div class="ad-label">Ad-19</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-20">
+                <div class="ad-label">Ad-20</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <!-- Third spiral level (lower position) -->
+            <div class="ad-tag ad-21">
+                <div class="ad-label">Ad-21</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-22">
+                <div class="ad-label">Ad-22</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-23">
+                <div class="ad-label">Ad-23</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-24">
+                <div class="ad-label">Ad-24</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-25">
+                <div class="ad-label">Ad-25</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-26">
+                <div class="ad-label">Ad-26</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-27">
+                <div class="ad-label">Ad-27</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-28">
+                <div class="ad-label">Ad-28"></div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-29">
+                <div class="ad-label">Ad-29</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-30">
+                <div class="ad-label">Ad-30</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <!-- Fourth ring - diagonal -->
+            <div class="ad-tag ad-31">
+                <div class="ad-label">Ad-31</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-32">
+                <div class="ad-label">Ad-32</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-33">
+                <div class="ad-label">Ad-33</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-34">
+                <div class="ad-label">Ad-34</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-35">
+                <div class="ad-label">Ad-35</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-36">
+                <div class="ad-label">Ad-36</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-37">
+                <div class="ad-label">Ad-37</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-38">
+                <div class="ad-label">Ad-38</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-39">
+                <div class="ad-label">Ad-39</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-40">
+                <div class="ad-label">Ad-40</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <!-- Fifth ring - another diagonal angle -->
+            <div class="ad-tag ad-41">
+                <div class="ad-label">Ad-41</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-42">
+                <div class="ad-label">Ad-42</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-43">
+                <div class="ad-label">Ad-43</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-44">
+                <div class="ad-label">Ad-44</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-45">
+                <div class="ad-label">Ad-45</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-46">
+                <div class="ad-label">Ad-46</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-47">
+                <div class="ad-label">Ad-47</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-48">
+                <div class="ad-label">Ad-48</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-49">
+                <div class="ad-label">Ad-49</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+
+            <div class="ad-tag ad-50">
+                <div class="ad-label">Ad-50</div>
+                <div class="sample-ad">Sample Ad</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to adjust sphere radius on window resize
+        function adjustSphereSize(width, height) {
+            // Store the current viewport size
+            window.currentViewportWidth = width || window.innerWidth;
+            window.currentViewportHeight = height || window.innerHeight;
+
+            // Call the sphere formation with new dimensions
+            createSphereFormation();
+        }
+
+        // Add resize event listener for when iframe is viewed directly
+        window.addEventListener('resize', function () {
+            adjustSphereSize();
+        });
+
+        // Listen for messages from parent window (when in iframe)
+        window.addEventListener('message', function (event) {
+            // Check if it's a viewport-resize message
+            if (event.data && event.data.type === 'viewport-resize') {
+                // Adjust sphere based on parent window dimensions
+                adjustSphereSize(event.data.width, event.data.height);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const scene = document.querySelector('.scene');
+            const adsContainer = document.querySelector('.ads-container');
+            let isDragging = false;
+            let previousX, previousY;
+            let rotationX = 0;
+            let rotationY = 0;
+            let translateZ = 0;
+            let autoRotationTimer;
+            let autoRotationSpeed = 0.01; // Speed for auto rotation
+
+            // Set initial zoom level for mobile devices (768px or less)
+            if (window.innerWidth <= 768) {
+                translateZ = -2000; // Maximum zoom-out state
+            }
+
+            // Variables for pinch zoom
+            let initialPinchDistance = null;
+            let initialScale = 1;
+
+            // スフィア状の配置を初期化
+            createSphereFormation();
+
+            // 初期の自動回転を開始
+            startAutoRotation();
+
+            // Apply initial transform for mobile devices
+            if (window.innerWidth <= 768) {
+                updateTransform();
+            }
+
+            // マウスでのドラッグ回転を設定（左ボタンのみ）
+            scene.addEventListener('mousedown', function (e) {
+                // 左ボタンのみチェック（0が左ボタン）
+                // Don't prevent default here to allow link clicks
+                if (e.button === 0 && !e.target.closest('a') && !e.target.closest('iframe')) {
+                    startDrag(e);
+                    e.preventDefault(); // Only prevent default if not clicking on a link or iframe
+                }
+            });
+
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', stopDrag);
+
+            // タッチ操作のためのイベントリスナー
+            scene.addEventListener('touchstart', function (e) {
+                // Don't interfere if touching an ad element
+                if (e.target.closest('a') || e.target.closest('iframe')) {
+                    return; // Let the browser handle the link click
+                }
+
+                // Handle pinch gesture
+                if (e.touches.length === 2) {
+                    initialPinchDistance = getPinchDistance(e.touches[0], e.touches[1]);
+                    initialScale = translateZ;
+                    e.preventDefault();
+                    return;
+                }
+
+                // Handle regular touch for rotation
+                const touch = e.touches[0];
+                startDrag({ clientX: touch.clientX, clientY: touch.clientY });
+                e.preventDefault();
+            }, { passive: false });
+
+            document.addEventListener('touchmove', function (e) {
+                // Handle pinch gesture
+                if (e.touches.length === 2) {
+                    const currentDistance = getPinchDistance(e.touches[0], e.touches[1]);
+                    if (initialPinchDistance === null) {
+                        initialPinchDistance = currentDistance;
+                        initialScale = translateZ;
+                    } else {
+                        // Calculate zoom factor based on pinch distance change
+                        const pinchDelta = currentDistance - initialPinchDistance;
+                        translateZ = initialScale + pinchDelta * 1.5; // Adjust sensitivity as needed
+
+                        // Limit zoom range
+                        translateZ = Math.min(Math.max(translateZ, -2000), 1000);
+                        updateTransform();
+                    }
+                    e.preventDefault();
+                }
+                // Handle regular touch movement for rotation
+                else if (isDragging && e.touches.length === 1) {
+                    const touch = e.touches[0];
+                    drag({ clientX: touch.clientX, clientY: touch.clientY });
+                    e.preventDefault();
+                }
+            }, { passive: false });
+
+            document.addEventListener('touchend', function (e) {
+                initialPinchDistance = null;
+                stopDrag();
+            });
+
+            // Add resize handler to adjust zoom level when window size changes
+            window.addEventListener('resize', function () {
+                if (window.innerWidth <= 768) {
+                    translateZ = -2000; // Maximum zoom-out state for mobile
+                }
+                updateTransform();
+            });
+
+            // Helper function to calculate distance between two touch points
+            function getPinchDistance(touch1, touch2) {
+                return Math.hypot(
+                    touch1.clientX - touch2.clientX,
+                    touch1.clientY - touch2.clientY
+                );
+            }
+
+            // ホイールでズームイン/アウト
+            scene.addEventListener('wheel', function (e) {
+                e.preventDefault();
+                const delta = e.deltaY * -0.5;
+                translateZ += delta;
+                // 移動範囲を制限
+                translateZ = Math.min(Math.max(translateZ, -2000), 1000);
+                updateTransform();
+            }, { passive: false });
+
+            // Fix for ad clicks - add global handler to ensure links work properly
+            document.addEventListener('click', function (e) {
+                // If clicking on an ad element, let the browser handle it normally
+                if (e.target.closest('a') || e.target.closest('iframe')) {
+                    // Don't interfere with the click
+                    return true;
+                }
+            }, false);
+
+            function startDrag(e) {
+                isDragging = true;
+                previousX = e.clientX;
+                previousY = e.clientY;
+
+                // ドラッグ開始時に自動回転を停止
+                stopAutoRotation();
+
+                scene.style.cursor = 'grabbing';
+            }
+
+            function drag(e) {
+                if (!isDragging) return;
+
+                const deltaX = e.clientX - previousX;
+                const deltaY = e.clientY - previousY;
+
+                // 回転値を更新 - 完全な360度回転を可能に
+                rotationY += deltaX * 0.5;
+                rotationX += deltaY * 0.5;
+
+                // 回転角度の制限を削除（完全な360度回転を許可）
+
+                updateTransform();
+
+                previousX = e.clientX;
+                previousY = e.clientY;
+            }
+
+            function stopDrag() {
+                if (!isDragging) return;
+                isDragging = false;
+
+                // 現在の位置から自動回転を再開
+                startAutoRotation();
+
+                scene.style.cursor = 'grab';
+            }
+
+            function updateTransform() {
+                // translate3dとrotateXYを組み合わせて変形を適用
+                // 回転の順序を変更して、より自然な球面回転を実現
+                adsContainer.style.transform = `translate3d(0, 0, ${translateZ}px) rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
+            }
+
+            function startAutoRotation() {
+                // Remove existing class-based animation
+                adsContainer.classList.remove('auto-rotate');
+
+                // Clear any existing timer
+                if (autoRotationTimer) {
+                    cancelAnimationFrame(autoRotationTimer);
+                }
+
+                // Start a new animation from current position
+                function animate() {
+                    rotationY += autoRotationSpeed;
+                    updateTransform();
+                    autoRotationTimer = requestAnimationFrame(animate);
+                }
+
+                autoRotationTimer = requestAnimationFrame(animate);
+            }
+
+            function stopAutoRotation() {
+                if (autoRotationTimer) {
+                    cancelAnimationFrame(autoRotationTimer);
+                    autoRotationTimer = null;
+                }
+            }
+
+            function createSphereFormation() {
+                const tags = document.querySelectorAll('.ad-tag');
+
+                // Calculate responsive radius based on viewport size
+                // Use stored dimensions if available (from parent window message)
+                const viewportWidth = window.currentViewportWidth || window.innerWidth;
+                const viewportHeight = window.currentViewportHeight || window.innerHeight;
+                const baseRadius = 740; // Original radius
+
+                // Scale radius based on viewport dimensions
+                let radius;
+                if (viewportWidth < 768) { // Mobile devices
+                    radius = baseRadius * 0.6; // 60% of original size
+                } else if (viewportWidth < 1024) { // Tablets
+                    radius = baseRadius * 0.75; // 75% of original size
+                } else { // Desktop
+                    radius = baseRadius; // Original size
+                }
+
+                console.log('Adjusting sphere for viewport size:', viewportWidth, 'x', viewportHeight, 'radius:', radius);
+
+                const totalTags = tags.length;
+
+                // 黄金比を使用して均等分布を実現
+                const phi = (1 + Math.sqrt(5)) / 2;
+
+                tags.forEach((tag, i) => {
+                    // 黄金比を使って点を均等に分布
+                    const y = 1 - (i / (totalTags - 1)) * 2; // -1から1の範囲
+                    const radius2 = Math.sqrt(1 - y * y); // この緯度での半径
+
+                    const theta = i * phi * Math.PI * 2; // 黄金角（ラジアン）
+                    const x = Math.cos(theta) * radius2;
+                    const z = Math.sin(theta) * radius2;
+
+                    // 希望の半径にスケーリング
+                    const scaledX = x * radius;
+                    const scaledY = y * radius;
+                    const scaledZ = z * radius;
+
+                    // 中心に向かって回転を計算
+                    const rotY = Math.atan2(scaledX, scaledZ) * (180 / Math.PI);
+                    const rotX = Math.atan2(scaledY, Math.sqrt(scaledX * scaledX + scaledZ * scaledZ)) * (180 / Math.PI);
+
+                    // 変換を適用
+                    tag.style.transform = `translateX(${scaledX}px) translateY(${scaledY}px) translateZ(${scaledZ}px) rotateY(${rotY}deg) rotateX(${-rotX}deg)`;
+
+                    // 広告を常に表示するための設定
+                    tag.style.transformStyle = 'preserve-3d';
+
+                    // 各広告にアニメーションを追加
+                    tag.style.transition = 'all 0.5s ease-out';
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
